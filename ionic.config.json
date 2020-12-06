@@ -1,0 +1,7 @@
+{
+  "name": "compras-module",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

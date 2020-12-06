@@ -1,0 +1,13 @@
+<div *ngIf="suppliers?.length > 0;else noSuppliers">
+  <ul *ngFor="let supplier of suppliers" class="collection">
+      <li (dblclick)="deleteSupplier($event, supplier)" class="collection-item"><b>Nombre: </b>{{supplier.nombre}}: <b>Correo Electrónico: </b>  {{supplier.correo}}: <b> Número: </b> 
+        {{supplier.numero}}: <b>NIT: </b>{{supplier.NIT}}: <b>Dirección:  </b>  {{supplier.direccion}} </li>
+  </ul>
+  </div>
+  
+  <ng-template #noSuppliers>
+    <hr>
+    <h5> No hay proveedores para listar</h5>
+  </ng-template>
+  
+  
