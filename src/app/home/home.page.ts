@@ -3,9 +3,15 @@ import { Component, OnInit } from '@angular/core';
 // Import AngularFirestore to make Queries.
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { Cart } from '../models/cart';
 import { Producto } from '../Producto';
 import { CartService } from '../services/cart.service';
+import { HttpClient } from '@angular/common/http';
+import ordersDB from '../../assets/data/acceptedOrders.json';
 
+export interface Data {
+  movies: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -13,11 +19,16 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  private orders = ordersDB;
+  public data: Data;
+  public columns: any;
+  public rows: any;
+  tableStyle = 'material';
   doc: any;
   tasks: any = [];
   Tareas: any = [{
     id: '',
-    data: {} as Producto
+    data: {} as Cart
    }];
 
    sliderConfig = {
@@ -30,21 +41,30 @@ export class HomePage implements OnInit {
   constructor(
     private firestore: AngularFirestore,
     private cartService: CartService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private http: HttpClient
+  ) {
+    console.log(this.orders);
+    this.columns = [
+      { name: 'Name' },
+      { name: 'Company' },
+      { name: 'Genre' }
+    ];
+
+    this.http.get<Data>('../../assets/data/acceptedOrders.json')
+      .subscribe((res) => {
+        console.log(res)
+        this.rows = res.movies;
+      });
+  }
 
   ngOnInit(){
-    // CALL FIRESTORE DOCUMENT AND SAVE IT IN OUR DOC VARIABLE.
-    /*this.firestore.doc('/Productos/Carne').valueChanges().subscribe(res => {
-      this.doc = res;
-      console.log('Doc retrieved', this.doc);
-    });*/
     this.getProducts();
     this.cart = this.cartService.getCart();
   }
 
   getProducts() {
-    this.firestore.collection('/Productos').snapshotChanges().subscribe(res => {
+    this.firestore.collection('/Carritos').snapshotChanges().subscribe(res => {
       this.Tareas = [];
       res.forEach(task => {
         this.Tareas.push({ id: task.payload.doc.id, data: task.payload.doc.data() });
@@ -57,23 +77,18 @@ export class HomePage implements OnInit {
     this.cartService.addProduct(product);
   }
 
+  update_status(recordID, newStatus) {
+    console.log('ID del Pedido: ' + recordID);
+    this.firestore.doc('Carritos/' + recordID).update({estado: newStatus});
+    this.getProducts();
+  }
+
   openCart() {
     this.router.navigate(['cart']);
   }
   goToRegister()
   {
     this.router.navigate(['register']);
-  }
-  itemAdded(item){
-    var myCart = this.cartService.getCart();
-    var i;
-    for (i = 0; i < myCart.length; i++) {
-        if (myCart[i] === item) {
-            return true;
-        }
-    }
-
-    return false;
   }
 
 }

@@ -83,6 +83,7 @@ export class SubmitFormPage implements OnInit {
     console.log(this.registrationForm.value);
     this.cartService.addProductDB(
       {
+        estado: 'Pendiente',
         nombreEncargado: this.registrationForm.value.name,
         telefonoEncargado: this.registrationForm.value.phone,
         emailEncargado: this.registrationForm.value.email,

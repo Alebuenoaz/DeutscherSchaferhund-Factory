@@ -16,11 +16,16 @@ import { environment } from 'src/environments/environment';
 // IMPORT FIRESTORE (DB) MODULE TO PERFORM A QUERY
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+import { HttpClientModule } from '@angular/common/http';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    NgxDatatableModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     // Add the modules to import and initialize the AngularFireModule with the environment.firebase we added previously.
