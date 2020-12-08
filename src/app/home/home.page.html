@@ -20,79 +20,130 @@
     </ion-toolbar>
   </ion-header>
 
-  <!--
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-
-  
-  <ion-card>
-    <ion-item href="#" class="ion-activated">
-      <ion-icon name="wifi" slot="start"></ion-icon>
-      <ion-label>Card Link Item 1 activated</ion-label>
-    </ion-item>
-  
-    <ion-item href="#">
-      <ion-icon name="wine" slot="start"></ion-icon>
-      <ion-label>Card Link Item 2</ion-label>
-    </ion-item>
-  
-    <ion-item class="ion-activated">
-      <ion-icon name="warning" slot="start"></ion-icon>
-      <ion-label>Card Button Item 1 activated</ion-label>
-    </ion-item>
-  
-    <ion-item>
-      <ion-icon name="walk" slot="start"></ion-icon>
-      <ion-label>Card Button Item 2</ion-label>
-    </ion-item>
-  </ion-card>
-  -->
-
-  <ion-slides [options]="sliderConfig">
-    <ion-slide *ngFor="let item of Tareas">
-      <ion-card class="horizontal-cards">
+  <textarea>LISTA DE PEDIDOS PENDIENTES</textarea>
+  <ion-list *ngIf="Tareas.length != 0">
+    <div style="display: inline-block;" *ngFor="let item of Tareas">
+      <ion-card class="horizontal-cards" *ngIf="item.data.estado == 'Pendiente';">
         <ion-item>
-          <!--ion-icon name="pin" slot="start"></ion-icon-->
-          <ion-label style="text-transform: uppercase;"><b>{{item.data.Producto}}</b></ion-label>
-          <!--ion-button fill="outline" slot="end">Añadir al carrito</ion-button-->
-          <ion-button  [disabled]="itemAdded(item)" (click)="addToCart(item)">
-            <ion-icon name="add-outline"></ion-icon>
-            <ion-icon name="cart-outline"></ion-icon>
+          <ion-label style="text-transform: uppercase;"><b>Estado: {{item.data.estado}}</b></ion-label>
+          <ion-button (click)="update_status(item.id,'Aceptado')">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-button (click)="update_status(item.id,'Rechazado')">
+            <ion-icon name="close-circle-outline"></ion-icon>
           </ion-button>
         </ion-item>
       
         <ion-card-content>
-          Decripción: {{item.data.Descripcion}}
+          Decripción: {{item.data.descripcion}}
         </ion-card-content>
         <ion-card-content>
-          Cantidad requerida: {{item.data.Stock}}
+          Encargado: {{item.data.nombreEncargado}}
         </ion-card-content>
-        <ion-img style="height: 25vh; max-width: auto;" [src]="item.data.Img"></ion-img>
-        <!--ion-img style="height: auto; max-width: auto;" [src]="item.data.Img"></ion-img-->
+        <ion-card-content>
+          Email del encargado: {{item.data.emailEncargado}}
+        </ion-card-content>
+        <ion-card-content>
+          Telefono del encargado: {{item.data.telefonoEncargado}}
+        </ion-card-content>
       </ion-card>
-    </ion-slide>
-  </ion-slides>
+    </div>
+  </ion-list>
 
-  <!--ion-list *ngIf="Tareas.length != 0">
-    <ion-card class="horizontal-cards" *ngFor="let item of Tareas">
-      <ion-item>
-        <ion-label style="text-transform: uppercase;"><b>{{item.data.Producto}}</b></ion-label>
-        <ion-button (click)="addToCart(item)">
-          <ion-icon name="add-outline"></ion-icon>
-          <ion-icon name="cart-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    
-      <ion-card-content>
-        Decripción: {{item.data.Descripcion}}
-      </ion-card-content>
-      <ion-card-content>
-        Cantidad requerida: {{item.data.Stock}}
-      </ion-card-content>
-      <ion-img style="height: 25vh; max-width: auto;" [src]="item.data.Img"></ion-img>
-    </ion-card>
-  </ion-list-->
+  <textarea>LISTA DE PEDIDOS ACEPTADOS</textarea>
+  <ion-list *ngIf="Tareas.length != 0">
+    <div style="display: inline-block;" *ngFor="let item of Tareas">
+      <ion-card class="horizontal-cards" *ngIf="item.data.estado == 'Aceptado';">
+        <ion-item>
+          <ion-label style="text-transform: uppercase;"><b>Estado: {{item.data.estado}}</b></ion-label>
+          <ion-button (click)="update_status(item.id,'Finalizado')">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      
+        <ion-card-content>
+          Decripción: {{item.data.descripcion}}
+        </ion-card-content>
+        <ion-card-content>
+          Encargado: {{item.data.nombreEncargado}}
+        </ion-card-content>
+        <ion-card-content>
+          Email del encargado: {{item.data.emailEncargado}}
+        </ion-card-content>
+        <ion-card-content>
+          Telefono del encargado: {{item.data.telefonoEncargado}}
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-list>
+
+  <textarea>LISTA DE PEDIDOS RECHAZADOS</textarea>
+  <ion-list *ngIf="Tareas.length != 0">
+    <div style="display: inline-block;" *ngFor="let item of Tareas">
+      <ion-card class="horizontal-cards" *ngIf="item.data.estado == 'Rechazado';">
+        <ion-item>
+          <ion-label style="text-transform: uppercase;"><b>Estado: {{item.data.estado}}</b></ion-label>
+        </ion-item>
+      
+        <ion-card-content>
+          Decripción: {{item.data.descripcion}}
+        </ion-card-content>
+        <ion-card-content>
+          Encargado: {{item.data.nombreEncargado}}
+        </ion-card-content>
+        <ion-card-content>
+          Email del encargado: {{item.data.emailEncargado}}
+        </ion-card-content>
+        <ion-card-content>
+          Telefono del encargado: {{item.data.telefonoEncargado}}
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-list>
+
+  <textarea>LISTA DE PEDIDOS FINALIZADOS</textarea>
+  <ion-list *ngIf="Tareas.length != 0">
+    <div style="display: inline-block;" *ngFor="let item of Tareas">
+      <ion-card class="horizontal-cards" *ngIf="item.data.estado == 'Finalizado';">
+        <ion-item>
+          <ion-label style="text-transform: uppercase;"><b>Estado: {{item.data.estado}}</b></ion-label>
+        </ion-item>
+      
+        <ion-card-content>
+          Decripción: {{item.data.descripcion}}
+        </ion-card-content>
+        <ion-card-content>
+          Encargado: {{item.data.nombreEncargado}}
+        </ion-card-content>
+        <ion-card-content>
+          Email del encargado: {{item.data.emailEncargado}}
+        </ion-card-content>
+        <ion-card-content>
+          Telefono del encargado: {{item.data.telefonoEncargado}}
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-list>
+
+  <!--
+  <ion-content>
+    <div class="ion-padding">
+  
+      <-- Theme classes dark, material, bootstrap ->
+      <ngx-datatable 
+        class="bootstrap"
+        [limit]="8" 
+        [rows]="rows" 
+        [rowHeight]="50" 
+        [columns]="columns"
+        [columnMode]="'force'" 
+        [sortType]="'multi'" 
+        [headerHeight]="50" 
+        [footerHeight]="50">
+      </ngx-datatable>
+  
+    </div>
+  </ion-content>
+  -->
 
 </ion-content>

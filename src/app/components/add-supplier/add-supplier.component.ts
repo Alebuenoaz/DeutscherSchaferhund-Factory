@@ -15,16 +15,17 @@ export class AddSupplierComponent implements OnInit {
     correo: '',
     NIT: null,
     direccion: '',
-    numero: null
-  }
+    numero: null,
+    password: ''
+  };
 
-  constructor(private supplierService: SupplierService, private authService:AuthService) { }
+  constructor(private supplierService: SupplierService, private authService: AuthService) { }
 
   ngOnInit() {
-    
+
   }
   onSubmit(){
-    if(this.supplier.nombre != '' && this.supplier.correo != ''){
+    if (this.supplier.nombre !== '' && this.supplier.correo !== ''){
       this.supplierService.addSupplier(this.supplier);
       this.authService.RegisterProveedor(this.supplier.correo, this.supplier.password);
       this.supplier.nombre = '';
