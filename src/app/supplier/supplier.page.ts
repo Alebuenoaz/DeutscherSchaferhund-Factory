@@ -70,15 +70,15 @@ export class SupplierPage implements OnInit {
 
     for (let prov of suppliers) {
       if (selected[prov.id]) {
-        prov.count = selected[prov.id];
+        prov.data.count = selected[prov.id];
       }else {
-        prov.count = 0;
+        prov.data.count = 0;
       }
     }
     console.log('suppliersDB');
     console.log(suppliers);
 
-    suppliers.sort((a, b) => (a.count < b.count) ? 1 : -1);
+    suppliers.sort((a, b) => (a.data.count < b.data.count) ? 1 : -1);
     console.log('suppliersSorted');
     console.log(this.suppliersDB);
     //countedProviders = Object.keys(selected).map(key => selected[key]);
