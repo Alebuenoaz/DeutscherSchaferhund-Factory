@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SupplierService} from '../../services/supplier.service';
-import { Supplier} from '../../models/supplier';
 import firebase from 'firebase/app';
 import { AuthService } from '../../services/auth.service';
+import { Supplier } from 'src/app/models/supplier';
 
 @Component({
   selector: 'app-add-supplier',
@@ -11,12 +11,14 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AddSupplierComponent implements OnInit {
   supplier: Supplier = {
+    id: '',
     nombre: '',
     correo: '',
     NIT: null,
     direccion: '',
     numero: null,
-    password: ''
+    password: '',
+    count: ''
   };
 
   constructor(private supplierService: SupplierService, private authService: AuthService) { }
