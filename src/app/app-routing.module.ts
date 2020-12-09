@@ -26,7 +26,23 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'pending',
+    loadChildren: () => import('./pages/pending/pending.module').then( m => m.PendingPageModule)
+  },
+  {
+    path: 'accepted',
+    loadChildren: () => import('./pages/accepted/accepted.module').then( m => m.AcceptedPageModule)
+  },
+  {
+    path: 'rejected',
+    loadChildren: () => import('./pages/rejected/rejected.module').then( m => m.RejectedPageModule)
+  },
+  {
+    path: 'finalized',
+    loadChildren: () => import('./pages/finalized/finalized.module').then( m => m.FinalizedPageModule)
   }
+
 
 ];
 
