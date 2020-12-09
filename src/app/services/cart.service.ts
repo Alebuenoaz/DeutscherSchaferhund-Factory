@@ -47,5 +47,9 @@ export class CartService {
 
   addProductDB(cart: Cart){
     this.cartsCollection.add(cart);
-}
+  }
+
+  getCartsDB(){
+    return this.carts;
+  }
 }

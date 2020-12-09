@@ -88,7 +88,13 @@ export class SubmitFormPage implements OnInit {
         telefonoEncargado: this.registrationForm.value.phone,
         emailEncargado: this.registrationForm.value.email,
         descripcion: this.registrationForm.value.description.contentDesc,
-        productos: this.cartService.getCart().map(product => product.data.Producto)
+        idProveedor: '',
+        insumos: this.cartService.getCart().map(input => (
+          {
+            insumo: '',
+            cantidad: '',
+            precioUnitario: '',
+          }))
       }
     );
   }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} 
-from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {Supplier} from '../models/supplier';
@@ -27,6 +26,10 @@ export class SupplierService {
 
   getSuppliers(){
     return this.suppliers;
+  }
+
+  getSuppliersDB(){
+    return this.suppliersCollection;
   }
 
   addSupplier(supplier: Supplier){
