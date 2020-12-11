@@ -19,12 +19,13 @@
       <ion-card class="horizontal-cards" *ngIf="item.data.estado == 'Pendiente';">
         <ion-item>
           <ion-label style="text-transform: uppercase;"><b>Estado: {{item.data.estado}}</b></ion-label>
-          <ion-button (click)="update_status(item.id,'Aceptado')">
+          <ion-button href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Hola {{item.data.nombreEncargado}},tu oferta ha sido aceptada, esta siendo verficada" (click)="update_status(item.id,'Aceptado')">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </ion-button>
-          <ion-button (click)="update_status(item.id,'Rechazado')">
+          <ion-button href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Hola {{item.data.nombreEncargado}},tu oferta lamentablemente ha sido rechazda, muchas gracias" (click)="update_status(item.id,'Rechazado')" color="danger">
             <ion-icon name="close-circle-outline"></ion-icon>
           </ion-button>
+          
         </ion-item>
       
         <ion-card-content>
