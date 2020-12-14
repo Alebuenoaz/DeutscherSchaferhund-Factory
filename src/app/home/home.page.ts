@@ -4,10 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Cart } from '../models/cart';
-import { Producto } from '../Producto';
 import { CartService } from '../services/cart.service';
 import { HttpClient } from '@angular/common/http';
-import ordersDB from '../../assets/data/acceptedOrders.json';
 
 export interface Data {
   movies: string;
@@ -19,7 +17,6 @@ export interface Data {
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  private orders = ordersDB;
   public data: Data;
   public columns: any;
   public rows: any;
@@ -43,20 +40,7 @@ export class HomePage implements OnInit {
     private cartService: CartService,
     private router: Router,
     private http: HttpClient
-  ) {
-    console.log(this.orders);
-    this.columns = [
-      { name: 'Name' },
-      { name: 'Company' },
-      { name: 'Genre' }
-    ];
-
-    this.http.get<Data>('../../assets/data/acceptedOrders.json')
-      .subscribe((res) => {
-        console.log(res)
-        this.rows = res.movies;
-      });
-  }
+  ) {}
 
   ngOnInit(){
     this.getProducts();
@@ -73,22 +57,10 @@ export class HomePage implements OnInit {
     });
   }
 
-  addToCart(product) {
-    this.cartService.addProduct(product);
-  }
-
   update_status(recordID, newStatus) {
     console.log('ID del Pedido: ' + recordID);
     this.firestore.doc('Carritos/' + recordID).update({estado: newStatus});
     this.getProducts();
   }
-
-  openCart() {
-    this.router.navigate(['cart']);
-  }
-  goToRegister()
-  {
-    this.router.navigate(['register']);
-  }
-
+  
 }
