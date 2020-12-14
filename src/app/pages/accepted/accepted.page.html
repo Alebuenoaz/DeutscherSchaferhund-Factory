@@ -22,6 +22,9 @@
           <ion-button (click)="update_status(item.id,'Finalizado')">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </ion-button>
+          <ion-button href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Hola {{item.data.nombreEncargado}},tu oferta ha sido confirmada" color= "success">
+            <ion-icon name="logo-whatsapp" ></ion-icon>
+          </ion-button>   
         </ion-item>
       
         <ion-card-content>
