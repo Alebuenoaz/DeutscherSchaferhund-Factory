@@ -7,10 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { RegisterPageRoutingModule } from './register-routing.module';
 
 import { RegisterPage } from './register.page';
-import { SuppliersComponent} from  '../components/suppliers/suppliers.component';
-import { NavbarComponent} from  '../components/navbar/navbar.component';
-import { AddSupplierComponent} from  '../components/add-supplier/add-supplier.component';
-import { SupplierService} from  '../services/supplier.service'
+import { ManagerService} from '../services/manager.service';
 
 
 @NgModule({
@@ -20,7 +17,7 @@ import { SupplierService} from  '../services/supplier.service'
     IonicModule,
     RegisterPageRoutingModule
   ],
-  declarations: [RegisterPage,SuppliersComponent,NavbarComponent,AddSupplierComponent],
-  providers: [SupplierService]
+  declarations: [RegisterPage],
+  providers: [ManagerService]
 })
 export class RegisterPageModule {}

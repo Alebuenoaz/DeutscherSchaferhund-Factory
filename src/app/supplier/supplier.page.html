@@ -12,8 +12,9 @@
     <ion-item>
       <ion-label>Listar por: </ion-label>
       <ion-select placeholder="Select One" [(ngModel)]="selected" (ionChange)="selectedChange($event)">
-        <ion-select-option value="number">Numero de Compras</ion-select-option>
         <ion-select-option value="name">Nombre</ion-select-option>
+        <ion-select-option value="number">Numero de Compras</ion-select-option>
+        <ion-select-option value="total">Total en Compras</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item *ngFor="let supplier of suppliers" >
@@ -22,7 +23,7 @@
         <h3>Número: {{supplier.numero}}</h3>
         <p>Correo Electrónico: {{supplier.correo}} NIT: {{supplier.NIT}} Dirección: {{supplier.direccion}} </p>
       </ion-label>
-      <ion-note slot="end" color="white">{{ supplier.count }}</ion-note>
+      <ion-note slot="end" color="white"> <p> {{ supplier.count }} #N</p> <p>{{ supplier.total }} Bs.</p>  </ion-note>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -37,6 +37,18 @@
             <ion-label>Proveedores</ion-label>
           </ion-item>
         </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/register">
+            <ion-icon name="person-add" slot="start"></ion-icon>
+            <ion-label>Registro Administradores</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item (click)="logOut()">
+            <ion-icon name="log-out" slot="start"></ion-icon>
+            <ion-label>Cerrar Sesión</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>
