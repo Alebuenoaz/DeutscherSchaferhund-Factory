@@ -1,5 +1,5 @@
 export interface Manager {
-    name: string;
-    email: string;
-    password: string;
+    nombre: string;
+    correo: string;
+    contrasena: string;
 }

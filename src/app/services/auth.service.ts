@@ -34,7 +34,7 @@ export class AuthService {
     try {
       const newmanager = {...manager};
       console.log('Supplier0' , manager);
-      const { user } = await this.afAuth.createUserWithEmailAndPassword(manager.email, manager.password);
+      const { user } = await this.afAuth.createUserWithEmailAndPassword(manager.correo, manager.contrasena);
       this.registerManagerData(user, newmanager);
       console.log('N Manager' , newmanager);
       // await this.sendVerifcationEmail();
@@ -66,9 +66,9 @@ export class AuthService {
     const managerRef: AngularFirestoreDocument<Manager> = this.afs.doc(`Administradores/${user.uid}`);
 
     const data: Manager = {
-      name: manager.name,
-      email: manager.email,
-      password: ''
+      nombre: manager.nombre,
+      correo: manager.correo,
+      contrasena: ''
     };
 
     return managerRef.set(data, { merge: true });

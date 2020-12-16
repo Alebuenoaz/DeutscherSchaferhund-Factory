@@ -11,20 +11,20 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
   manager: Manager = {
-    name: '',
-    email: '',
-    password: ''
+    nombre: '',
+    correo: '',
+    contrasena: ''
   }
   constructor(private managerService: ManagerService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
   onSubmit(){
-    if (this.manager.email !== '' && this.manager.password !== ''){
+    if (this.manager.correo !== '' && this.manager.contrasena !== ''){
       this.authService.register(this.manager).then(() => {
-        this.manager.name = '';
-        this.manager.email = '';
-        this.manager.password = '';
+        this.manager.nombre = '';
+        this.manager.correo = '';
+        this.manager.contrasena = '';
         this.router.navigateByUrl('supplier');
       });
       // this.managerService.addManager(this.manager);

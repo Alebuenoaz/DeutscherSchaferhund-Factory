@@ -17,9 +17,11 @@ export class LoginPage implements OnInit {
   }
 
   async loginProveedor(form): Promise<void>{
-    this.authService.loginProveedor(form.value.email, form.value.pass).then(
+    this.authService.login(form.value.email, form.value.pass).then(
       () => {
+        console.log("Deberia pasar!");
         this.router.navigateByUrl('pending');
+        console.log("Deberia mostrar pending!");
       },
       async error => {
         const alert = await this.alertCtrl.create({
