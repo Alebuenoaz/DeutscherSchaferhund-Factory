@@ -1,7 +1,45 @@
-<app-navbar></app-navbar>
+<ion-header>
+  <ion-toolbar mode="ios" color ="secondary">
+      <ion-title>
+          Registro Proveedores
+      </ion-title>
+      <ion-buttons>
+        <ion-back-button defaultHref="/supplier" ></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <div class="conatainer">
-    <app-add-supplier></app-add-supplier>
-    <app-suppliers></app-suppliers>
+  <div class="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Añadir proveedor</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form (ngSubmit)="onSubmit()" class="col s6">
+          <div class="row">
+            <div class="input-field col s6">
+              <ion-text>
+                <h4>Nombre</h4>
+              </ion-text>
+              <ion-input type="text" [(ngModel)]="manager.name" name="nombre"></ion-input>
+            </div>
+            <div class="input-field col s6">
+              <ion-text>
+                <h4>Correo electrónico</h4>
+              </ion-text>
+              <ion-input type="text" [(ngModel)]="manager.email" name="correo"></ion-input>
+            </div>
+            <div class="input-field col s6">
+              <ion-text>
+                <h4>Contraseña</h4>
+              </ion-text>
+              <ion-input type="password" [(ngModel)]="manager.password" name="password"></ion-input>
+            </div>
+            <ion-input type="submit" value="Añadir" class="btn"></ion-input>
+          </div>
+        </form>
+      </ion-card-content>
+    </ion-card>
     </div>
 </ion-content>
+

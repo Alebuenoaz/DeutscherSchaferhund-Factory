@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { async } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import firebase from 'firebase/app';
@@ -12,34 +11,34 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private authService:AuthService, private router:Router, private alertCtrl:AlertController) { }
+  constructor(private authService: AuthService, private router: Router, private alertCtrl: AlertController) { }
 
   ngOnInit() {
   }
 
-  async loginProveedor(form):Promise<void>{
+  async loginProveedor(form): Promise<void>{
     this.authService.loginProveedor(form.value.email, form.value.pass).then(
-      ()=>{
+      () => {
         this.router.navigateByUrl('pending');
       },
-      async error =>{
-        const alert= await this.alertCtrl.create({
-          message:error.message,
-          buttons:[{text:'ok',role:'cancel'}],
+      async error => {
+        const alert = await this.alertCtrl.create({
+          message: error.message,
+          buttons: [{text: 'ok', role: 'cancel'}],
         });
         await alert.present();
       }
     );
   }
-  resetPassword(email):void{
+  resetPassword(email): void{
     this.authService.resetPassword(email).then(
-      ()=>{
+      () => {
         this.router.navigateByUrl('login');
       },
-      async error =>{
-        const alert= await this.alertCtrl.create({
-          message:error.message,
-          buttons:[{text:'ok',role:'cancel'}],
+      async error => {
+        const alert = await this.alertCtrl.create({
+          message: error.message,
+          buttons: [{text: 'ok', role: 'cancel'}],
         });
         await alert.present();
       }
@@ -68,7 +67,7 @@ export class LoginPage implements OnInit {
           text: 'Ok',
           handler: async () => {
             console.log('Confirmado');
-            let result = await alert.onDidDismiss();
+            const result = await alert.onDidDismiss();
             console.log(result.data.values.email);
             this.resetPassword(result.data.values.email);
             this.router.navigateByUrl('login');
