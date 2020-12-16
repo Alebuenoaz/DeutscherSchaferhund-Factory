@@ -5,18 +5,6 @@
 export const environment = {
   production: false,
   firebase: {
-    /*apiKey: "AIzaSyCacd_W6y3SrLmA00M2Vpro7ZBVefrDDWM",
-    authDomain: "chachasdb.firebaseapp.com",
-    projectId: "chachasdb",
-    storageBucket: "chachasdb.appspot.com",
-    messagingSenderId: "602767901624",
-    appId: "1:602767901624:web:ac7b82a5954ef51323854d"
-    apiKey: "AIzaSyCacd_W6y3SrLmA00M2Vpro7ZBVefrDDWM",
-    authDomain: "chachasdb.firebaseapp.com",
-    projectId: "chachasdb",
-    storageBucket: "chachasdb.appspot.com",
-    messagingSenderId: "602767901624",
-    appId: "1:602767901624:web:ac7b82a5954ef51323854d" */
     apiKey: "AIzaSyCacd_W6y3SrLmA00M2Vpro7ZBVefrDDWM",
     authDomain: "chachasdb.firebaseapp.com",
     projectId: "chachasdb",
