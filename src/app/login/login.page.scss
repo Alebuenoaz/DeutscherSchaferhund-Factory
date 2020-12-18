@@ -173,12 +173,13 @@ a:hover {
   background-image: linear-gradient(to right, #ebb537, #e0ac33, #d1a02d);
   background-size: 200%;
   font-size: 1.2rem;
-  color: #fff;
+  color: white;
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   margin: 1rem 0;
   cursor: pointer;
   transition: 0.5s;
+  --background: #FF8C00;
 }
 .btn:hover {
   background-position: right;

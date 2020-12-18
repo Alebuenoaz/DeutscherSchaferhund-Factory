@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-toolbar mode="ios" color ="secondary">
+  <ion-toolbar>
       <ion-title>
-          Registro Proveedores
+          Registro de Administrador
       </ion-title>
-      <ion-buttons>
-        <ion-back-button defaultHref="/supplier" ></ion-back-button>
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
       </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -12,7 +12,7 @@
   <div class="container">
     <ion-card>
       <ion-card-header>
-        <ion-card-title>Añadir proveedor</ion-card-title>
+        <ion-card-title>Añadir Nuevo Administrador:</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <form (ngSubmit)="onSubmit()" class="col s6">
@@ -35,7 +35,7 @@
               </ion-text>
               <ion-input type="password" [(ngModel)]="manager.contrasena" name="password"></ion-input>
             </div>
-            <ion-input type="submit" value="Añadir" class="btn"></ion-input>
+            <ion-input type="submit" value="Registrar" class="btn1"></ion-input>
           </div>
         </form>
       </ion-card-content>

@@ -19,13 +19,14 @@
       <ion-card class="horizontal-cards" *ngIf="item.data.estado == 'Pendiente';">
         <ion-item>
           <ion-label style="text-transform: uppercase;"><b>Estado: {{item.data.estado}}</b></ion-label>
-          <ion-button href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Hola {{item.data.nombreEncargado}},tu oferta ha sido aceptada, esta siendo verficada" (click)="update_status(item.id,'Aceptado')">
+          <ion-button href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Hola {{item.data.nombreEncargado}},tu oferta ha sido aceptada, esta siendo verficada" (click)="update_status(item.id,'Aceptado')" color="success">
+            Aceptar
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </ion-button>
           <ion-button href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Hola {{item.data.nombreEncargado}},tu oferta lamentablemente ha sido rechazda, muchas gracias" (click)="update_status(item.id,'Rechazado')" color="danger">
+            Rechazar
             <ion-icon name="close-circle-outline"></ion-icon>
           </ion-button>
-          
         </ion-item>
       
         <ion-card-content>
@@ -40,6 +41,18 @@
         <ion-card-content>
           Telefono del encargado: {{item.data.telefonoEncargado}}
         </ion-card-content>
+        <ion-item>
+          <ion-label style="text-transform: uppercase;"><b>Productos:</b></ion-label>
+        </ion-item>
+        <ion-list>
+          <div style="display: inline-block;" *ngFor="let insumo of item.data.insumos">
+            <ion-card class="vertical-cards">
+              <ion-card-content> Producto: {{ insumo.insumo }} </ion-card-content>
+              <ion-card-content> Cantidad: {{ insumo.cantidad }} </ion-card-content>
+              <ion-card-content> Precio: {{ insumo.precioUnitario }} </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-list>
       </ion-card>
     </div>
   </ion-list>
