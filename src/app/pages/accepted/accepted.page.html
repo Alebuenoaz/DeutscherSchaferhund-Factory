@@ -19,7 +19,7 @@
       <ion-card class="horizontal-cards" *ngIf="item.data.estado == 'Aceptado';">
         <ion-item>
           <ion-label style="text-transform: uppercase;"><b>Estado: {{item.data.estado}}</b></ion-label>
-          <ion-button (click)="update_status(item.id,'Finalizado')">
+          <ion-button (click)="update_status(item,'Finalizado')">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </ion-button>
           <ion-button href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Hola {{item.data.nombreEncargado}},tu oferta ha sido confirmada" color= "success">
