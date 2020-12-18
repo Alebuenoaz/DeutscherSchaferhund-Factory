@@ -8,22 +8,37 @@
 </ion-header>
 
 <ion-content >
+  <ion-item>
+    <ion-label>Listar por: </ion-label>
+    <ion-select placeholder="Seleccione Categoría" [(ngModel)]="selected" (ionChange)="selectedChange($event)">
+      <ion-select-option value="name">Nombre</ion-select-option>
+      <ion-select-option value="number">Numero de Compras</ion-select-option>
+      <ion-select-option value="total">Total en Compras</ion-select-option>
+    </ion-select>
+  </ion-item>
   <ion-list>
-    <ion-item>
-      <ion-label>Listar por: </ion-label>
-      <ion-select placeholder="Select One" [(ngModel)]="selected" (ionChange)="selectedChange($event)">
-        <ion-select-option value="name">Nombre</ion-select-option>
-        <ion-select-option value="number">Numero de Compras</ion-select-option>
-        <ion-select-option value="total">Total en Compras</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item *ngFor="let supplier of suppliers" >
-      <ion-label >
-        <h2>{{supplier.nombre}}</h2>
-        <h3>Número: {{supplier.telefono}}</h3>
-        <p>Correo Electrónico: {{supplier.correo}} NIT: {{supplier.NIT}} Dirección: {{supplier.direccion}} </p>
-      </ion-label>
-      <ion-note slot="end" color="white"> <p> {{ supplier.count }} #N</p> <p>{{ supplier.total }} Bs.</p>  </ion-note>
-    </ion-item>
+
+    <ion-card *ngFor="let supplier of suppliers">
+      <ion-row>
+        <ion-col size="10">
+          <ion-card-content>
+            <ion-card-title>{{ supplier.nombre }}</ion-card-title>
+            <ion-row ion-row class="ion-align-items-center">
+              <ion-col size="8">
+                <ion-card-subtitle></ion-card-subtitle>
+                <ion-card-subtitle><p class="leftText">Teléfono de Contacto: {{ supplier.telefono }}</p></ion-card-subtitle>
+                <ion-card-subtitle style="clear: both;"><span class="leftText">Correo Electrónico: {{supplier.correo}}</span></ion-card-subtitle>
+                <ion-card-subtitle style="clear: both;">NIT: {{supplier.nit}}</ion-card-subtitle>
+                <ion-card-subtitle > Dirección: {{supplier.direccion}}</ion-card-subtitle>
+              </ion-col>
+              <ion-col size="2">
+                <ion-card-subtitle *ngIf="supplier.count"><p  class="rightText">{{ supplier.count }} #N</p></ion-card-subtitle>
+                <ion-card-subtitle *ngIf="supplier.total" style="clear: both;"><p  class="rightText">{{ supplier.total }} Bs.</p></ion-card-subtitle>
+            </ion-col>
+            </ion-row>
+          </ion-card-content>
+      </ion-col>
+    </ion-row>
+    </ion-card>
   </ion-list>
 </ion-content>
