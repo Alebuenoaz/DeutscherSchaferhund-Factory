@@ -16,7 +16,11 @@ export class AcceptedPage implements OnInit {
   Tareas: any = [{
     id: '',
     data: {} as Cart
-   }];
+  }];
+  Insumos: any = [{
+    id: '',
+    data: {} as Insumo
+  }];
 
    sliderConfig = {
      spaceBetween: 2,
@@ -42,6 +46,13 @@ export class AcceptedPage implements OnInit {
         this.Tareas.push({ id: task.payload.doc.id, data: task.payload.doc.data() });
       });
     });
+    //
+    this.firestore.collection('/Insumos').snapshotChanges().subscribe(res => {
+      this.Insumos = [];
+      res.forEach(task => {
+        this.Insumos.push({ id: task.payload.doc.id, data: task.payload.doc.data() });
+      });
+    });
   }
 
   update_status(cart, newStatus) {
@@ -61,13 +72,18 @@ export class AcceptedPage implements OnInit {
         console.log("AQUIIII " + res.payload.data()['stock']);
         currentStock = await res.payload.data()['stock'];
         this.firestore.doc('Insumos/' + productID).update({stock: newStock});
-      });*/
+      });
     await this.firestore.collection('Insumos').doc(productID).valueChanges().subscribe(
       async res => {
         //console.log("STOCK ACTUALLLLLL " + res['stock']);
         currentStock = await res['stock'];
       }
-    );
+    );*/
+    this.Insumos.forEach(element => {
+      if (productID == element.id)
+      currentStock = element.data.stock;
+    });
+
     console.log("Stock Actual: " + currentStock);
     console.log("Stock Para Añadir: " + addedStock);  
     var newStock = currentStock + addedStock;
