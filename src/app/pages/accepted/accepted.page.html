@@ -19,12 +19,6 @@
       <ion-card class="horizontal-cards" *ngIf="item.data.estado == 'Aceptado';">
         <ion-item>
           <ion-label style="text-transform: uppercase;"><b>Estado: {{item.data.estado}}</b></ion-label>
-          <ion-button (click)="update_status(item,'Finalizado')">
-            <ion-icon name="checkmark-circle-outline"></ion-icon>
-          </ion-button>
-          <ion-button href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Hola {{item.data.nombreEncargado}},tu oferta ha sido confirmada" color= "success">
-            <ion-icon name="logo-whatsapp" ></ion-icon>
-          </ion-button>   
         </ion-item>
       
         <ion-card-content>
@@ -39,6 +33,28 @@
         <ion-card-content>
           Telefono del encargado: {{item.data.telefonoEncargado}}
         </ion-card-content>
+        <ion-item>
+          <ion-label><b>Productos:</b></ion-label>
+        </ion-item>
+        <ion-list>
+          <div style="display: inline-block;" *ngFor="let insumo of item.data.insumos">
+            <ion-card class="vertical-cards">
+              <ion-card-content> Producto: {{ insumo.insumo }} </ion-card-content>
+              <ion-card-content> Cantidad: {{ insumo.cantidad }} </ion-card-content>
+              <ion-card-content> Precio: {{ insumo.precioUnitario }} </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-list>
+        <ion-item>
+          <ion-button slot="end" (click)="update_status(item,'Finalizado')" class="btn1">
+            Pedido Recibido
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-button slot="end" href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Buen día {{item.data.nombreEncargado}}, requerimos contactarnos con usted" color= "success">
+            Contactar
+            <ion-icon name="logo-whatsapp" ></ion-icon>
+          </ion-button>   
+        </ion-item>
       </ion-card>
     </div>
   </ion-list>

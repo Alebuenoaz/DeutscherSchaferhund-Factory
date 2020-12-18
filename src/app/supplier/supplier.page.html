@@ -20,7 +20,7 @@
     <ion-item *ngFor="let supplier of suppliers" >
       <ion-label >
         <h2>{{supplier.nombre}}</h2>
-        <h3>Número: {{supplier.numero}}</h3>
+        <h3>Número: {{supplier.telefono}}</h3>
         <p>Correo Electrónico: {{supplier.correo}} NIT: {{supplier.NIT}} Dirección: {{supplier.direccion}} </p>
       </ion-label>
       <ion-note slot="end" color="white"> <p> {{ supplier.count }} #N</p> <p>{{ supplier.total }} Bs.</p>  </ion-note>

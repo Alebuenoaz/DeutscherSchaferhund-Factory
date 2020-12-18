@@ -67,27 +67,15 @@ export class AcceptedPage implements OnInit {
 
   async addStock(productID, addedStock){
     var currentStock = 0;
-    /*this.firestore.collection('Insumos').doc(productID).snapshotChanges().subscribe(
-      async res => { 
-        console.log("AQUIIII " + res.payload.data()['stock']);
-        currentStock = await res.payload.data()['stock'];
-        this.firestore.doc('Insumos/' + productID).update({stock: newStock});
-      });
-    await this.firestore.collection('Insumos').doc(productID).valueChanges().subscribe(
-      async res => {
-        //console.log("STOCK ACTUALLLLLL " + res['stock']);
-        currentStock = await res['stock'];
-      }
-    );*/
     this.Insumos.forEach(element => {
       if (productID == element.id)
       currentStock = element.data.stock;
+      element.data.stock = currentStock + addedStock;
     });
-
-    console.log("Stock Actual: " + currentStock);
-    console.log("Stock Para Añadir: " + addedStock);  
+    //console.log("Stock Actual: " + currentStock);
+    //console.log("Stock Para Añadir: " + addedStock);  
     var newStock = currentStock + addedStock;
-    console.log("Nuevo Stock: " + newStock);
+    //console.log("Nuevo Stock: " + newStock);
     this.firestore.doc('Insumos/' + productID).update({stock: newStock});
   }
 

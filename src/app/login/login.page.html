@@ -11,7 +11,7 @@
 		<div class="login-content">
 			<form action="index.html" #form="ngForm" (ngSubmit)="loginProveedor(form)">
 				<img src="../../assets/avatar.svg">
-				<h2 class="title">Welcome</h2>
+				<h2 class="title">Bienvenido</h2>
            		<div class="input-div one">
            		   <div class="i">
            		   		<i class="fas fa-user"></i>
@@ -25,11 +25,11 @@
            		    	<i class="fas fa-lock"></i>
            		   </div>
            		   <div class="div">
-           		    	<input name="pass" placeholder="Password" type="password" class="input" ngModel required>
+           		    	<input name="pass" placeholder="Contraseña" type="password" class="input" ngModel required>
             	   </div>
             	</div>
-            	<a (click)="presentAlertPrompt()">Forgot Password?</a>
-				<ion-button type="submit" class="btn" [disabled]="form.invalid">Login</ion-button>
+            	<a (click)="presentAlertPrompt()">Olvido la contraseña?</a>
+				<ion-button type="submit" class="btn" [disabled]="form.invalid">Iniciar Sesión</ion-button>
             </form>
         </div>
     </div>

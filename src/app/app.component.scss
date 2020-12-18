@@ -1,0 +1,40 @@
+.btn1 {
+--background: #FF8C00;
+color: white;
+-webkit-text-stroke: 1px white;
+}
+
+.label-header{
+color: #97918c;
+font-family: Arial, Helvetica, sans-serif;
+font-style: italic;
+--background: #fff1c2;
+}
+
+ion-content {
+--background: white;
+}
+
+ion-toolbar {
+--background: #f6d83c;
+}
+
+ion-list-header {
+font-size: large;
+}
+
+ion-label {
+    font-size: medium;
+}
+
+ion-title {
+    color: white;
+}
+
+ion-menu-button {
+    color: white;
+}
+
+ion-icon {
+    color:  #FF8C00;
+}

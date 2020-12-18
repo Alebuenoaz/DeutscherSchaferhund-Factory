@@ -33,6 +33,18 @@
         <ion-card-content>
           Telefono del encargado: {{item.data.telefonoEncargado}}
         </ion-card-content>
+        <ion-item>
+          <ion-label><b>Productos:</b></ion-label>
+        </ion-item>
+        <ion-list>
+          <div style="display: inline-block;" *ngFor="let insumo of item.data.insumos">
+            <ion-card class="vertical-cards">
+              <ion-card-content> Producto: {{ insumo.insumo }} </ion-card-content>
+              <ion-card-content> Cantidad: {{ insumo.cantidad }} </ion-card-content>
+              <ion-card-content> Precio: {{ insumo.precioUnitario }} </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-list>
       </ion-card>
     </div>
   </ion-list>
