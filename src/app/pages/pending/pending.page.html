@@ -46,11 +46,11 @@
           </div>
         </ion-list>
         <ion-item>
-          <ion-button slot="end" href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Hola {{item.data.nombreEncargado}},tu oferta ha sido aceptada, esta siendo verficada" (click)="update_status(item.id,'Aceptado')" color="success">
+          <ion-button slot="end" href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Buen día {{item.data.nombreEncargado}},su oferta ha sido aceptada, nos pondremos en contacto en la brevedad" (click)="update_status(item.id,'Aceptado')" color="success">
             Aceptar
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </ion-button>
-          <ion-button slot="end" href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Hola {{item.data.nombreEncargado}},tu oferta lamentablemente ha sido rechazda, muchas gracias" (click)="update_status(item.id,'Rechazado')" color="danger">
+          <ion-button slot="end" href="https://wa.me/591{{item.data.telefonoEncargado}}?text=Buen día {{item.data.nombreEncargado}},su oferta lamentablemente ha sido rechazada, pero agradecemos su interés" (click)="update_status(item.id,'Rechazado')" color="danger">
             Rechazar
             <ion-icon name="close-circle-outline"></ion-icon>
           </ion-button>
